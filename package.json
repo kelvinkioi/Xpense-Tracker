@@ -4,7 +4,9 @@
   "description": "This project is a web application designed to help users manage their finances by tracking income and expenditures",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "npm run watch --prefix src/server",
+    "client": "npm run start --prefix src/client",
+    "watch": "npm run server & npm run client"
   },
   "keywords": [],
   "author": "Kelvin Kioi <kelvinkioi.101k@gmail.com>",

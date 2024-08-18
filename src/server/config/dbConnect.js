@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const dbConnect = async () => {
     try {
-        await mongoose.connect('mongodb+srv://kelvinkioi:JOAm8bY2SRTW8j6W@xpense-tracker.irr6u.mongodb.net/?retryWrites=true&w=majority&appName=Xpense-Tracker', {
+        await mongoose.connect('url', {
             useNewUrlParser: true,
             useUnifiedTopology: true, 
         });

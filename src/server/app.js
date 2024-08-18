@@ -4,6 +4,13 @@ const app = express();
 const {registerUser} = require("./controllers/users/users");
 const userRoute = require("./routes/users/usersRuote");
 
+const log = (req, res, next) => {
+    console.log("Logged in");
+    next();
+};
+
+app.use(log);
+
 //Connecting to the database
 dbConnect();
 

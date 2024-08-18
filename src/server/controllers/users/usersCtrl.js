@@ -1,5 +1,6 @@
 const { response } = require('../../app');
 const User = require('../../models/Users');
+const generateToken = require('../../middleware/tokenGenerator');
 const expressAsyncHandler = require('express-async-handler');
 
 //Register User
@@ -29,5 +30,24 @@ const fetchUsers = expressAsyncHandler(async (req, res) => {
     }
 });
 
+//user login
+const loginUser = expressAsyncHandler(async (req, res) => {
+    const {email, password} = req?.body;
+    const userFound = await User.findOne({email});
 
-module.exports = {registerUser, fetchUsers};
+    if (userFound && (await userFound?.verifyPassword(password))) {
+        res.json({
+            _id: userFound?._id,
+            firstname: userFound?.firstname,
+            lastname: userFound?.lastname,
+            email: userFound?.email,
+            isAdmin: userFound?.admin,
+            token: generateToken(userFound._id),
+        });
+    } else {
+        res.status(401);
+        throw new Error('Invalid email or password');
+    };
+});
+
+module.exports = {registerUser, fetchUsers, loginUser};

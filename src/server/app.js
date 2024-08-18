@@ -1,4 +1,5 @@
 const express = require("express");
+const dotenv = require("dotenv");
 const dbConnect = require("./config/dbConnect");
 const app = express();
 const {registerUser} = require("./controllers/users/usersCtrl");
@@ -12,14 +13,21 @@ const log = (req, res, next) => {
 
 app.use(log);
 
+//env
+dotenv.config();
+
 //Connecting to the database
 dbConnect();
 
 //Middlewares
 app.use(express.json());
 
+app.get('/', (req, res)=> {
+    res.json({msg: 'Welcome to the Xpense Tracker'});
+});
+
 //Ruotes
-app.use('/', userRoute);
+app.use('/api/users', userRoute);
 
 //Error handler
 app.use(notFoundHandler);

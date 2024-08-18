@@ -1,9 +1,10 @@
 const express = require("express");
 const userRoute = express.Router();
-const { registerUser, fetchUsers} = require("../../controllers/users/usersCtrl");
+const { registerUser, fetchUsers, loginUser} = require("../../controllers/users/usersCtrl");
 
-userRoute.post('/api/users/register', registerUser);
-userRoute.get('/api/users', fetchUsers);
+userRoute.post('/register', registerUser);
+userRoute.post('/login', loginUser);
+userRoute.get('/', fetchUsers);
 
 
 module.exports = userRoute;

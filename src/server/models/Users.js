@@ -8,12 +8,12 @@ const userSchema = mongoose.Schema({
     password: { type: String, required: [true, "Password is required"] },
     admin: { type: Boolean, default: false},
     },
-    {timestamp: true}
+    {timestamps: true}
 );
 
 
 //compiling schema into a model
 
-const User = mongoose.model("User, userSchema");
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

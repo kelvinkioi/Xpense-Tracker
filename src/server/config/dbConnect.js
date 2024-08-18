@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const dbConnect = async () => {
     try {
-        await mongoose.connect('url', {
+        await mongoose.connect('', {
             useNewUrlParser: true,
             useUnifiedTopology: true, 
         });
@@ -13,3 +13,4 @@ const dbConnect = async () => {
 };
 
 module.exports = dbConnect;
+

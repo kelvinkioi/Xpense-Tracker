@@ -3,7 +3,7 @@ const dbConnect = require("./config/dbConnect");
 const app = express();
 const {registerUser} = require("./controllers/users/usersCtrl");
 const userRoute = require("./routes/users/usersRuote");
-const errorHandler = require("./middleware/errorsMiddleware");
+const {errorHandler, notFoundHandler} = require("./middleware/errorsMiddleware");
 
 const log = (req, res, next) => {
     console.log("Logged in");
@@ -22,6 +22,7 @@ app.use(express.json());
 app.use('/', userRoute);
 
 //Error handler
+app.use(notFoundHandler);
 app.use(errorHandler);
 
 

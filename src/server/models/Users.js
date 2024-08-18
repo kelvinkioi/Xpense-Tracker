@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-
+const bcrypt = require("bcryptjs");
 //Creating a schema
 const userSchema = mongoose.Schema({
     firstname: { type: String, required: [true, "First name is required"]},
@@ -11,9 +11,15 @@ const userSchema = mongoose.Schema({
     {timestamps: true}
 );
 
+// #ing password
+userSchema.pre("save", async function (next) {
+    if (this.isModified("password")) {
+        this.password = await bcrypt.hash(this.password, 10);
+    }
+    next();
+});
 
 //compiling schema into a model
-
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

@@ -13,4 +13,16 @@ const createIncomeCtrl = expressAsyncHandler(async (req, res) => {
     }
 });
 
-module.exports = {createIncomeCtrl};
+//Fetch Incomes'
+const fetchAllIncomeCtrl = expressAsyncHandler(async (req, res) => {
+    try {
+        const income = await Income.find()
+        res.json(income);
+    }
+    catch (error) {
+        res.json({msg: "Error: " + error.message});
+    }
+});
+
+
+module.exports = {createIncomeCtrl, fetchAllIncomeCtrl};

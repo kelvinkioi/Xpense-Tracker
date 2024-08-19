@@ -5,6 +5,7 @@ const app = express();
 const {registerUser} = require("./controllers/users/usersCtrl");
 const userRoute = require("./routes/users/usersRuote");
 const {errorHandler, notFoundHandler} = require("./middleware/errorsMiddleware");
+const incomeRoute = require("./routes/income/incomeRuote");
 
 const log = (req, res, next) => {
     console.log("Logged in");
@@ -26,8 +27,11 @@ app.get('/', (req, res)=> {
     res.json({msg: 'Welcome to the Xpense Tracker'});
 });
 
-//Ruotes
+//Users Ruotes
 app.use('/api/users', userRoute);
+
+//Income Ruote
+app.use('/api/income', incomeRoute);
 
 //Error handler
 app.use(notFoundHandler);

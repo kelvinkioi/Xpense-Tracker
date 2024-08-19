@@ -24,5 +24,18 @@ const fetchAllIncomeCtrl = expressAsyncHandler(async (req, res) => {
     }
 });
 
+//Fetch a particular Incomes
+const fetchSingleIncomeCtrl = expressAsyncHandler(async (req, res) => {
+    const {id} = req?.params;
 
-module.exports = {createIncomeCtrl, fetchAllIncomeCtrl};
+    try {
+        const income = await Income.findById(id);
+        res.json(income);
+    }
+    catch (error) {
+        res.json({msg: "Error: " + error.message});
+    }
+});
+
+
+module.exports = {createIncomeCtrl, fetchAllIncomeCtrl, fetchSingleIncomeCtrl};

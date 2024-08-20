@@ -37,5 +37,32 @@ const fetchSingleIncomeCtrl = expressAsyncHandler(async (req, res) => {
     }
 });
 
+//Update a particular Income
+const updateIncomeCtrl = expressAsyncHandler(async (req, res) => {
+    const {id} = req?.params;
+    const {title, amount, description} = req.body;
 
-module.exports = {createIncomeCtrl, fetchAllIncomeCtrl, fetchSingleIncomeCtrl};
+    try {
+        const income = await Income.findByIdAndUpdate(id, {title, amount, description}, {new: true});
+        res.json(income);
+    }
+    catch (error) {
+        res.json({msg: "Error: " + error.message});
+    }
+});
+
+//Delete a particular Income
+const deleteIncomeCtrl = expressAsyncHandler(async (req, res) => {
+    const {id} = req?.params;
+    const {title, amount, description} = req.body;
+
+    try {
+        const income = await Income.findByIdAndDelete(id, {title, amount, description}, {new: true});
+        res.json(income);
+    }
+    catch (error) {
+        res.json({msg: "Error: " + error.message});
+    }
+});
+
+module.exports = {createIncomeCtrl, fetchAllIncomeCtrl, fetchSingleIncomeCtrl, updateIncomeCtrl, deleteIncomeCtrl};

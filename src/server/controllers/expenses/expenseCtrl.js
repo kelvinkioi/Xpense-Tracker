@@ -15,8 +15,9 @@ const createExpenseCtrl = expressAsyncHandler(async (req, res) => {
 
 //Fetch Expenses
 const fetchAllExpenseCtrl = expressAsyncHandler(async (req, res) => {
+    const {page} = req.query;
     try {
-        const expense = await Expense.find()
+        const expense = await Expense.paginate({}, {limit:10, page: Number(page)})
         res.json(expense);
     }
     catch (error) {

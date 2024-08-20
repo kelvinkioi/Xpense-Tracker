@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 //Creating a schema
 const incomeSchema = mongoose.Schema({
@@ -13,6 +14,8 @@ const incomeSchema = mongoose.Schema({
     {timestamps: true}
 );
 
+//Pagination
+incomeSchema.plugin(mongoosePaginate);
 
 //compiling schema into a model
 const Income = mongoose.model("Income", incomeSchema);

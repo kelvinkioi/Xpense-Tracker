@@ -6,6 +6,7 @@ const {registerUser} = require("./controllers/users/usersCtrl");
 const userRoute = require("./routes/users/usersRuote");
 const {errorHandler, notFoundHandler} = require("./middleware/errorsMiddleware");
 const incomeRoute = require("./routes/income/incomeRuote");
+const expenseRoute = require("./routes/expenses/expensesRuote");
 
 const log = (req, res, next) => {
     console.log("Logged in");
@@ -30,8 +31,11 @@ app.get('/', (req, res)=> {
 //Users Ruotes
 app.use('/api/users', userRoute);
 
-//Income Ruote
+//Income Ruotes
 app.use('/api/income', incomeRoute);
+
+//Expense Ruotes
+app.use('/api/expenses', expenseRoute);
 
 //Error handler
 app.use(notFoundHandler);

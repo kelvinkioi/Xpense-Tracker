@@ -17,4 +17,4 @@ const expenseSchema = mongoose.Schema({
 //compiling schema into a model
 const Expense = mongoose.model("Income", expenseSchema);
 
-module.exports = Income;
+module.exports = Expense;

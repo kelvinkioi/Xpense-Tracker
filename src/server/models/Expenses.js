@@ -12,7 +12,9 @@ const expenseSchema = mongoose.Schema({
         ref: "User",
         required: [true, "User id is required"] },
     },
-    {timestamps: true}
+    {timestamps: true,
+     toObject: { virtuals: true },
+     toJSON: { virtuals: true }, }
 );
 
 //pagination

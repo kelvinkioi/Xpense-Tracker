@@ -13,8 +13,6 @@ Welcome to the Xpense Tracker backend! 🎉 This backend system is designed to h
   - [Expenses](#expenses)
 - [Scripts](#scripts)
 - [Error Handling](#error-handling)
-- [License](#license)
-- [Contributing](#contributing)
 - [Contact](#contact)
 
 ## Features
@@ -51,64 +49,63 @@ To get started with the Xpense Tracker backend, follow these steps:
     Database Connection: The MongoDB connection string is defined in the .env file and is used by the dbConnect function to connect to the database.
     JWT Secret: The JWT secret is used to sign and verify JSON Web Tokens for authentication.
 
-5.**API Endpoints**
-    ***Users***
-    ****Register a User****
-        - Endpoint: POST /api/users/register
-        - Description: Registers a new user.
-        - Body: { email, firstname, lastname, password }
-    ****Login a User****
-        - Endpoint: POST /api/users/login
-        - Description: Logs in a user and returns a JWT.
-        - Body: { email, password }
-    ****Fetch Users****
-        -  Endpoint: GET /api/users
-        - Description: Fetches all registered users.
-    ***Income***
-    ****Create Income Record****
-        -  Endpoint: POST /api/income
-        - Description: Creates a new income record.
-        - Body: { amount, description, date }
-        - Fetch All Income Records
-    ****Fetch All Income Records****
-        - Endpoint: GET /api/income
-        - Description: Fetches all income records.
-        - Fetch Single Income Record
-    ****Fetch Single Income Record****
-        - Endpoint: GET /api/income/:id
-        - Description: Fetches a single income record by ID.
-        - Update Income Record
-    ****Update Income Record****
-        Endpoint: PUT /api/income/:id
-        Description: Updates an income record by ID.
-        Body: { amount, description, date }
-        Delete Income Record
-    ****Update Income Record****
-        Endpoint: DELETE /api/income/:id
-        Description: Deletes an income record by ID.
-    ***Expenses***
-    ****Create Expense Record****
-        - Endpoint: POST /api/expenses
-        - Description: Creates a new expense record.
-        - Body: { amount, description, date }
-    *****Fetch All Expense Records****
-        - Endpoint: GET /api/expenses
-        - Description: Fetches all expense records.
-        - Fetch Single Expense Record
-    *****Fetch Single Expense Record****
-        - Endpoint: GET /api/expenses/:id
-        - Description: Fetches a single expense record by ID.
-        - Update Expense Record
-    ****Update Expense Record****
-        - Endpoint: PUT /api/expenses/:id
-        - Description: Updates an expense record by ID.
-        - Body: { amount, description, date }
-        - Delete Expense Record
-    *****Delete Expense Record****
-        Endpoint: DELETE /api/expenses/:id
-        Description: Deletes an expense record by ID.
+## API Endpoints
 
-6. ***Scripts***
+### Users
+
+* **Register a User**
+  * Endpoint: `POST /api/users/register`
+  * Description: Registers a new user.
+  * Body: `{ email, firstname, lastname, password }`
+* **Login a User**
+  * Endpoint: `POST /api/users/login`
+  * Description: Logs in a user and returns a JWT.
+  * Body: `{ email, password }`
+* **Fetch Users**
+  * Endpoint: `GET /api/users`
+  * Description: Fetches all registered users.
+
+### Income
+
+* **Create Income Record**
+  * Endpoint: `POST /api/income`
+  * Description: Creates a new income record.
+  * Body: `{ amount, description, date }`
+* **Fetch All Income Records**
+  * Endpoint: `GET /api/income`
+  * Description: Fetches all income records.
+* **Fetch Single Income Record**
+  * Endpoint: `GET /api/income/:id`
+  * Description: Fetches a single income record by ID.
+* **Update Income Record**
+  * Endpoint: `PUT /api/income/:id`
+  * Description: Updates an income record by ID.
+  * Body: `{ amount, description, date }`
+* **Delete Income Record**
+  * Endpoint: `DELETE /api/income/:id`
+  * Description: Deletes an income record by ID.
+
+### Expenses
+
+* **Create Expense Record**
+  * Endpoint: `POST /api/expenses`
+  * Description: Creates a new expense record.
+  * Body: `{ amount, description, date }`
+* **Fetch All Expense Records**
+  * Endpoint: `GET /api/expenses`
+  * Description: Fetches all expense records.
+* **Fetch Single Expense Record**
+  * Endpoint: `GET /api/expenses/:id`
+  * Description: Fetches a single expense record by ID.
+* **Update Expense Record**
+  * Endpoint: `PUT /api/expenses/:id`
+  * Description: Updates an expense record by ID.
+  * Body: `{ amount, description, date }`
+* **Delete Expense Record**
+  * Endpoint: `DELETE /api/expenses/:id`
+  * Description: Deletes an expense record by ID.
+
+## Scripts
     Start the Server
     ```bash
     npm start
@@ -117,7 +114,7 @@ To get started with the Xpense Tracker backend, follow these steps:
     ```bash
     npm run watch
 
-7. ***Error Handling***
+## Error Handling
     The application includes custom middleware for handling errors and not found routes. The errorsMiddleware module provides two middleware functions:
         - notFoundHandler: Handles routes that are not found.
         - errorHandler: Handles all other errors.
@@ -125,5 +122,3 @@ To get started with the Xpense Tracker backend, follow these steps:
 ## Contact
     kelvinkioi.101k@gmail.com
     https://github.com/kelvinkioi
-
-

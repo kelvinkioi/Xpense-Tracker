@@ -1,4 +1,3 @@
-const { response } = require('../../app');
 const User = require('../../models/Users');
 const generateToken = require('../../middleware/tokenGenerator');
 const expressAsyncHandler = require('express-async-handler');

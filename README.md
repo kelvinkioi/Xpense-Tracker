@@ -107,11 +107,11 @@ To get started with the Xpense Tracker backend, follow these steps:
 
 ## Scripts
   **Start the Server**
-    ```bash
+    ```
     npm start
     ```
   **Watch for Changes (Development)**
-    ```bash
+    ```
     npm run watch
     ```
 

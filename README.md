@@ -44,7 +44,7 @@ To get started with the Xpense Tracker backend, follow these steps:
     ```bash
     MONGO_URL=your_mongodb_connection_string
     JWT_SECRET=your_jwt_secret
-
+    ```
 4. **Configuration**
     Database Connection: The MongoDB connection string is defined in the .env file and is used by the dbConnect function to connect to the database.
     JWT Secret: The JWT secret is used to sign and verify JSON Web Tokens for authentication.
@@ -106,16 +106,17 @@ To get started with the Xpense Tracker backend, follow these steps:
   * Description: Deletes an expense record by ID.
 
 ## Scripts
-    Start the Server
+  **Start the Server**
     ```bash
     npm start
     ```
-    Watch for Changes (Development)
+  **Watch for Changes (Development)**
     ```bash
     npm run watch
+    ```
 
 ## Error Handling
-    The application includes custom middleware for handling errors and not found routes. The errorsMiddleware module provides two middleware functions:
+The application includes custom middleware for handling errors and not found routes. The errorsMiddleware module provides two middleware functions:
         - notFoundHandler: Handles routes that are not found.
         - errorHandler: Handles all other errors.
 

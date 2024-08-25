@@ -114,7 +114,7 @@ To get started with the Xpense Tracker backend, follow these steps:
   * Endpoint: `GET /api/expenses/all`
   * Description: Fetches all expense records.
   * Only the admin can fetch all expense records
-  **Fetch All Expense Records for a User**
+* **Fetch All Expense Records for a User**
   * Endpoint: `GET /api/expenses/`
   * Description: Fetches all expense records for a registered User.
   * Request headers:

@@ -173,11 +173,11 @@ The response will return a JSON object containing the following fields:
     Authorization: Bearer your-token-here
     ```
 ## Scripts
-  **Start the Server**
+* **Start the Server**
     ```
     npm start
     ```
-  **Watch for Changes (Development)**
+* **Watch for Changes (Development)**
     ```
     npm run watch
     ```

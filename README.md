@@ -105,9 +105,47 @@ To get started with the Xpense Tracker backend, follow these steps:
   * Endpoint: `DELETE /api/expenses/:id`
   * Description: Deletes an expense record by ID.
 
+### Get Net Balance
+
+Retrieve the net balance for a user, which is calculated by subtracting total expenses from total income.
+
+#### **Request**
+
+- **Method:** `GET`
+- **URL:** `/api/finance/netbalance`
+- **Authentication:** Required
+
+#### **Authentication**
+
+This endpoint requires authentication. Ensure that the user is logged in and a valid token is included in the request headers.
+
+#### **Request Headers**
+
+| Header         | Value                     |
+|----------------|---------------------------|
+| Authorization  | Bearer `<token>`          |
+
+#### **Response**
+
+The response will return a JSON object containing the following fields:
+
+| Field       | Type    | Description                                           |
+|-------------|---------|-------------------------------------------------------|
+| income      | Number  | Total income of the user.                            |
+| expenses    | Number  | Total expenses of the user.                          |
+| netBalance  | Number  | Net balance calculated as income - expenses.        |
+| message     | String  | A fun message based on the net balance.              |
+
+#### **Example Request**
+
+    ```http
+    GET /api/finance/net-balance HTTP/1.1
+    Host: localhost:5000
+    Authorization: Bearer your-token-here
+    ```
 ## Scripts
   **Start the Server**
-    ```
+    ```bash 
     npm start
     ```
   **Watch for Changes (Development)**

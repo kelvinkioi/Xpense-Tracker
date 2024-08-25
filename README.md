@@ -15,13 +15,17 @@ Welcome to the Xpense Tracker backend! 🎉 This backend system is designed to h
 - [Error Handling](#error-handling)
 - [Contact](#contact)
 
+
 ## Features
 
 - **User Management**: Register, login, and fetch users.
 - **Income Tracking**: Create, read, update, and delete income records.
 - **Expense Tracking**: Create, read, update, and delete expense records.
+- **Net Balance Calculation**: Calculate the net balance by subtracting total expenses from total income, with personalized messages based on the result.
+- **Admin Privileges**: Admins can fetch all income, expenses, and net income for all users.
 - **Authentication**: Secure routes using JSON Web Tokens (JWT).
 - **Database**: MongoDB with Mongoose for data management.
+
 
 ## Installation
 
@@ -84,7 +88,7 @@ To get started with the Xpense Tracker backend, follow these steps:
   * Endpoint: `GET /api/expenses/`
   * Description: Fetches all income records for a registered User.
   * Request headers:
-  
+
     | Header         | Value                     |
     |----------------|---------------------------|
     | Authorization  | Bearer `<token>`          |

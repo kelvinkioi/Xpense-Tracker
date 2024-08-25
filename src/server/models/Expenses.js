@@ -21,6 +21,6 @@ const expenseSchema = mongoose.Schema({
 expenseSchema.plugin(mongoosePaginate);
 
 //compiling schema into a model
-const Expense = mongoose.model("Income", expenseSchema);
+const Expense = mongoose.model("Expense", expenseSchema);
 
 module.exports = Expense;

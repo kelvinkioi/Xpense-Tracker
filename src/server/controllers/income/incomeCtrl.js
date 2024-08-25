@@ -26,6 +26,19 @@ const fetchAllIncomeCtrl = expressAsyncHandler(async (req, res) => {
     }
 });
 
+// Fetch All Incomes for the Authenticated User
+const fetchAllIncomeUserCtrl = expressAsyncHandler(async (req, res) => {
+    const {page} = req.query;
+    const userId = req.user._id; // Ensure req.user is set by the auth middleware
+
+    try {
+        const income = await Income.paginate({user: userId}, {limit: 10, page: Number(page), populate: 'user'});
+        res.json(income);
+    } catch (error) {
+        res.status(500).json({msg: "Error: " + error.message});
+    }
+});
+
 //Fetch a particular Incomes
 const fetchSingleIncomeCtrl = expressAsyncHandler(async (req, res) => {
     const {id} = req?.params;
@@ -67,4 +80,4 @@ const deleteIncomeCtrl = expressAsyncHandler(async (req, res) => {
     }
 });
 
-module.exports = {createIncomeCtrl, fetchAllIncomeCtrl, fetchSingleIncomeCtrl, updateIncomeCtrl, deleteIncomeCtrl};
+module.exports = {createIncomeCtrl, fetchAllIncomeCtrl, fetchSingleIncomeCtrl, fetchAllIncomeUserCtrl, updateIncomeCtrl, deleteIncomeCtrl};

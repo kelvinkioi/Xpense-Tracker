@@ -1,5 +1,5 @@
 const expressAsyncHandler = require('express-async-handler');
-const Expense = require('../../models/Income');
+const Expense = require('../../models/Expenses');
 
 
 const createExpenseCtrl = expressAsyncHandler(async (req, res) => {
@@ -24,6 +24,19 @@ const fetchAllExpenseCtrl = expressAsyncHandler(async (req, res) => {
     }
     catch (error) {
         res.json({msg: "Error: " + error.message});
+    }
+});
+
+// Fetch All Expenses for the Authenticated User
+const fetchAllExpenseUserCtrl = expressAsyncHandler(async (req, res) => {
+    const {page} = req.query;
+    const userId = req.user._id; // Ensure req.user is set by the auth middleware
+
+    try {
+        const expense = await Income.paginate({user: userId}, {limit: 10, page: Number(page), populate: 'user'});
+        res.json(expense);
+    } catch (error) {
+        res.status(500).json({msg: "Error: " + error.message});
     }
 });
 
@@ -68,4 +81,4 @@ const deleteExpenseCtrl = expressAsyncHandler(async (req, res) => {
     }
 });
 
-module.exports = {createExpenseCtrl, fetchAllExpenseCtrl, fetchSingleExpenseCtrl, updateExpenseCtrl, deleteExpenseCtrl};
+module.exports = {createExpenseCtrl, fetchAllExpenseCtrl, fetchAllExpenseUserCtrl,fetchSingleExpenseCtrl, updateExpenseCtrl, deleteExpenseCtrl};

@@ -41,5 +41,14 @@ const authMiddleware = expressAsyncHandler(async (req, res, next) => {
       throw new Error("Authorization token not found. Please provide a valid token.");
     }
   });
+
+  // Middleware to check if the user is an admin
+const adminMiddleware = (req, res, next) => {
+  if (req.user && req.user.admin) {
+      next();
+  } else {
+      res.status(403).json({ msg: "Access denied. Admins only." });
+  }
+};
   
-  module.exports = authMiddleware;
+  module.exports = {authMiddleware, adminMiddleware};

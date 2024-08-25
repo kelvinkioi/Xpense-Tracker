@@ -57,6 +57,11 @@ To get started with the Xpense Tracker backend, follow these steps:
   * Endpoint: `POST /api/users/register`
   * Description: Registers a new user.
   * Body: `{ email, firstname, lastname, password }`
+* **Register as admin**
+  * Endpoint: `POST /api/users/register`
+  * Description: Registers a new user.
+  * Body: `{ email, firstname, lastname, password, admin }`
+
 * **Login a User**
   * Endpoint: `POST /api/users/login`
   * Description: Logs in a user and returns a JWT.
@@ -72,8 +77,18 @@ To get started with the Xpense Tracker backend, follow these steps:
   * Description: Creates a new income record.
   * Body: `{ amount, description, date }`
 * **Fetch All Income Records**
-  * Endpoint: `GET /api/income`
+  * Endpoint: `GET /api/income/all`
   * Description: Fetches all income records.
+  * Only the admin can fetch all income records
+* **Fetch All Income Records for a User**
+  * Endpoint: `GET /api/expenses/`
+  * Description: Fetches all income records for a registered User.
+  * Request headers:
+  
+    | Header         | Value                     |
+    |----------------|---------------------------|
+    | Authorization  | Bearer `<token>`          |
+
 * **Fetch Single Income Record**
   * Endpoint: `GET /api/income/:id`
   * Description: Fetches a single income record by ID.
@@ -92,8 +107,18 @@ To get started with the Xpense Tracker backend, follow these steps:
   * Description: Creates a new expense record.
   * Body: `{ amount, description, date }`
 * **Fetch All Expense Records**
-  * Endpoint: `GET /api/expenses`
+  * Endpoint: `GET /api/expenses/all`
   * Description: Fetches all expense records.
+  * Only the admin can fetch all expense records
+  **Fetch All Expense Records for a User**
+  * Endpoint: `GET /api/expenses/`
+  * Description: Fetches all expense records for a registered User.
+  * Request headers:
+
+    | Header         | Value                     |
+    |----------------|---------------------------|
+    | Authorization  | Bearer `<token>`          |
+
 * **Fetch Single Expense Record**
   * Endpoint: `GET /api/expenses/:id`
   * Description: Fetches a single expense record by ID.

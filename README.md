@@ -174,7 +174,7 @@ The response will return a JSON object containing the following fields:
     ```
 ## Scripts
   **Start the Server**
-    ```bash 
+    ```
     npm start
     ```
   **Watch for Changes (Development)**

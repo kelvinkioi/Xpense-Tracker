@@ -8,6 +8,8 @@ const {errorHandler, notFoundHandler} = require("./middleware/errorsMiddleware")
 const incomeRoute = require("./routes/income/incomeRuote");
 const expenseRoute = require("./routes/expenses/expensesRuote");
 const financeRoute = require("./routes/finance/financeRuote");
+const authRoute = require("./routes/auth/authRoute");
+const resetPasswordRoute = require('./routes/auth/resetPasswordRuote');
 
 const log = (req, res, next) => {
     console.log("Logged in");
@@ -29,6 +31,12 @@ app.get('/', (req, res)=> {
     res.json({msg: 'Welcome to the Xpense Tracker'});
 });
 
+//Auth Ruotes
+app.use('/api/auth', authRoute);
+
+//Reset Password Route
+app.use('/api/reset-password', resetPasswordRoute);
+
 //Users Ruotes
 app.use('/api/users', userRoute);
 
@@ -40,6 +48,8 @@ app.use('/api/expenses', expenseRoute);
 
 //Finance Ruotes
 app.use('/api/finance', financeRoute);
+
+
 
 //Error handler
 app.use(notFoundHandler);

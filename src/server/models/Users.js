@@ -9,25 +9,29 @@ const userSchema = mongoose.Schema({
     lastname: { type: String, required: [true, "Last name is required"]},
     email: { type: String, required: [true, "Email is required"], unique: true },
     password: { type: String, required: [true, "Password is required"],
-        validate: {
-            validator: function(v) {
-                return passwordRegex.test(v);
-            },
-            message: "Password must be at least 8 characters long, include both uppercase and lowercase letters, a number, and a special character."
-        }
      },
     admin: { type: Boolean, default: false},
+    // Additional fields for reset password functionality
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
     },
     {timestamps: true}
 );
 
-// #ing password
+// Validate plain text password before saving or updating
 userSchema.pre("save", async function (next) {
     if (this.isModified("password")) {
+        // Validate the plain text password before hashing
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!%*?#&]{8,}$/;
+        if (!passwordRegex.test(this.password)) {
+            return next(new Error("Password must be at least 8 characters long, include both uppercase and lowercase letters, a number, and a special character."));
+        }
+        // Hash the new password
         this.password = await bcrypt.hash(this.password, 10);
     }
     next();
 });
+
 
 //Verifying password
 userSchema.methods.verifyPassword = async function (enteredPassword) {

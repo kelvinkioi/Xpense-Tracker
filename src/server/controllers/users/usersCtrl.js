@@ -45,7 +45,7 @@ const loginUser = expressAsyncHandler(async (req, res) => {
         });
     } else {
         res.status(401);
-        throw new Error('Invalid email or password');
+        throw new Error('Invalid email or password. If you have forgotten your password, please use the "Forgot Password" link on the login page to reset it');
     };
 });
 

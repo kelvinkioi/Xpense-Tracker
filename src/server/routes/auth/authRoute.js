@@ -1,7 +1,7 @@
 const express = require('express');
 const crypto = require('crypto');
-const User = require('../../models/Users'); // Ensure this path is correct
-const sendResetEmail = require('../../middleware/sendResetEmail'); // Ensure this path is correct
+const User = require('../../models/Users'); 
+const sendResetEmail = require('../../middleware/sendResetEmail'); 
 
 const router = express.Router();
 

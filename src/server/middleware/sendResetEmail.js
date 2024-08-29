@@ -11,7 +11,9 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-const sendResetEmail = async (email, resetUrl) => {
+const sendResetEmail = async (email, resetToken) => {
+    const cleanToken = resetToken.replace('http://localhost:5000/reset-password/', '');
+    const resetUrl = `http://localhost:5000/api/auth/reset-password/${cleanToken}`;  
   try {
     const mailOptions = {
       from: 'fern.hintz@ethereal.email',

@@ -11,6 +11,7 @@ Welcome to the Xpense Tracker backend! 🎉 This backend system is designed to h
   - [Users](#users)
   - [Income](#income)
   - [Expenses](#expenses)
+  - [Password Reset](#password-reset)
 - [Scripts](#scripts)
 - [Error Handling](#error-handling)
 - [Contact](#contact)

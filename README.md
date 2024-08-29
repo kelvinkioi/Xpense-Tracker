@@ -74,6 +74,33 @@ To get started with the Xpense Tracker backend, follow these steps:
   * Endpoint: `GET /api/users`
   * Description: Fetches all registered users.
 
+### Password Reset
+
+* **Forgot Password**
+  * Endpoint: `POST /api/auth/forgot-password`
+  * Description: Sends a password reset link to the user's email if the email is registered in the system.
+  * Body: `{ email }`
+  * Response: `{ "message": "Password reset link sent to your email." }`
+
+* **Reset Password**
+  * Endpoint: `POST /api/auth/reset-password/:token`
+  * Description: Resets the user's password using the token received in the password reset email.
+  * Params: 
+    * `token`: The reset token sent to the user's email.
+  * Body: `{ password }`
+  * Response: `{ "message": "Password successfully reset. You can now log in with your new password." }`
+
+#### Example
+
+1. **Forgot Password Request**
+
+   Send a POST request to `/api/auth/forgot-password` with the following body:
+   ```json
+   {
+     "email": "user@example.com"
+   }
+
+
 ### Income
 
 * **Create Income Record**
